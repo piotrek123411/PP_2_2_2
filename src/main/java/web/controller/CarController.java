@@ -1,6 +1,5 @@
 package web.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +24,5 @@ public class CarController {
         list = CarService.carsCount(list, allCars);
         model.addAttribute("list", list);
         return "car";
-
     }
 }
