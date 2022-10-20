@@ -1,28 +1,45 @@
+//package web.controller;
+//
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.ui.ModelMap;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import web.model.Car;
+//import web.service.CarService;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.ResourceBundle;
+//
+//@Controller
+//public class CarController {
+//
+//    @GetMapping("/cars")
+//    public String getCars(@RequestParam(name="locale", defaultValue = "en", required = false)String locale,  ModelMap model) {
+//        model.addAttribute("cars", new CarService().carsCount());
+//        ResourceBundle bundle = ResourceBundle.getBundle("language_" + locale);
+//        model.addAttribute("headline", bundle.getString("headline"));
+//        return "cars";
+//    }
+////    public String cars(@RequestParam(value = "count", defaultValue = "5") int allCars, Model model) {
+////
+////    }
+//}
 package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.model.Car;
 import web.service.CarService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class CarController {
 
-    @GetMapping("/cars")
-    public String cars(@RequestParam(value = "count", defaultValue = "5") int allCars, Model model) {
-        List<Car> list = new ArrayList<>();
-        list.add(new Car("RangeRover", "White", 200));
-        list.add(new Car("Mercedes", "Black", 124));
-        list.add(new Car("BMW", "Grey", 545));
-        list.add(new Car("Porsche", "Red", 911));
-        list.add(new Car("Jeep", "Cyan", 100));
-        list = CarService.carsCount(list, allCars);
-        model.addAttribute("list", list);
-        return "car";
+    @GetMapping(value = "/cars")
+    public String getCars(@RequestParam(value = "count", defaultValue = "5") int number, Model model) {
+        model.addAttribute("list", CarService.getCars(number));
+        return "cars";
     }
 }
