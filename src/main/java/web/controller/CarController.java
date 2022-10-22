@@ -33,13 +33,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarService;
+import web.service.Service;
 
 @Controller
 public class CarController {
 
     @GetMapping(value = "/cars")
     public String getCars(@RequestParam(value = "count", defaultValue = "5") int number, Model model) {
-        model.addAttribute("list", CarService.getCars(number));
+        Service service = new CarService();
+        model.addAttribute("list", service.getCars(number));
         return "cars";
     }
 }

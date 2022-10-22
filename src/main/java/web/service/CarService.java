@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 @Service
 public class CarService implements web.service.Service {
 
-    public static List<Car> getCars(int number) {
+    public List<Car> getCars(int number) {
         List<Car> list = new ArrayList<>();
         list.add(new Car("RangeRover", "White", 200));
         list.add(new Car("Mercedes", "Black", 124));
