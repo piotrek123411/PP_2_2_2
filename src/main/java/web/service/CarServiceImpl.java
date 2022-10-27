@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CarCarServiceImpl implements CarService {
+public class CarServiceImpl implements CarService {
 
     public List<Car> getCars(int number) {
         List<Car> list = new ArrayList<>();
